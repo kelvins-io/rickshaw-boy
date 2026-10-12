@@ -1,0 +1,72 @@
+.screen-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 0.5rem 1rem;
+  background: #1a1e24;
+  overflow: hidden;
+}
+
+#pull-canvas {
+  width: min(960px, 100%);
+  height: auto;
+  max-height: calc(100dvh - 5.5rem);
+  display: block;
+  background: #243040;
+  border-radius: 2px;
+  touch-action: none;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: rgba(20, 22, 26, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.game-overlay.hidden {
+  display: none !important;
+}
+
+.game-brief {
+  margin: 0;
+  max-width: 22em;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--paper);
+  line-height: 1.6;
+}
+
+.game-hud {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--paper-dim);
+  pointer-events: none;
+  z-index: 3;
+}
+
+@media (max-width: 640px) {
+  .screen-game {
+    padding-top: 5.5rem;
+  }
+
+  #pull-canvas {
+    max-height: calc(100dvh - 7rem);
+  }
+}

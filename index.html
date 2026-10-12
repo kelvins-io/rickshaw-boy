@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>骆驼祥子 · 改写命运</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/game.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- HUD：剧情/小游戏时显示 -->
+    <header id="hud" class="hud hidden" aria-label="状态">
+      <div class="hud-brand">祥子</div>
+      <div class="hud-stats">
+        <div class="stat" data-stat="money">
+          <span class="stat-label">积蓄</span>
+          <div class="stat-bar"><i id="bar-money"></i></div>
+          <span class="stat-val" id="val-money">0</span>
+        </div>
+        <div class="stat" data-stat="stamina">
+          <span class="stat-label">体力</span>
+          <div class="stat-bar"><i id="bar-stamina"></i></div>
+          <span class="stat-val" id="val-stamina">0</span>
+        </div>
+        <div class="stat" data-stat="dignity">
+          <span class="stat-label">体面</span>
+          <div class="stat-bar"><i id="bar-dignity"></i></div>
+          <span class="stat-val" id="val-dignity">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 开场 -->
+    <section id="screen-intro" class="screen screen-intro is-active">
+      <div class="intro-atmosphere" aria-hidden="true">
+        <div class="dust dust-a"></div>
+        <div class="dust dust-b"></div>
+        <div class="skyline"></div>
+        <div class="lamp"></div>
+      </div>
+      <div class="intro-content">
+        <p class="intro-eyebrow">北平 · 一九三〇年代</p>
+        <h1 class="intro-title">骆驼祥子</h1>
+        <p class="intro-tagline">命运可以拉着你走，也可以被你拉回来。</p>
+        <div class="intro-actions">
+          <button type="button" class="btn btn-primary" id="btn-start">开始改写</button>
+          <button type="button" class="btn btn-ghost" id="btn-continue">继续存档</button>
+        </div>
+        <p class="intro-hint">抉择与拉车，决定他是否沉沦。</p>
+      </div>
+    </section>
+
+    <!-- 剧情 -->
+    <section id="screen-story" class="screen screen-story hidden">
+      <article class="story-panel">
+        <p class="story-chapter" id="story-chapter"></p>
+        <h2 class="story-title" id="story-title"></h2>
+        <div class="story-body" id="story-body"></div>
+        <div class="story-choices" id="story-choices"></div>
+      </article>
+    </section>
+
+    <!-- 拉车小游戏 -->
+    <section id="screen-game" class="screen screen-game hidden">
+      <div class="game-overlay" id="game-overlay">
+        <p class="game-brief" id="game-brief">按住空格或触屏加速；↑↓ 或滑动变道，躲开坑洼与恶犬。</p>
+        <button type="button" class="btn btn-primary" id="btn-game-start">上街拉车</button>
+      </div>
+      <canvas id="pull-canvas" width="960" height="540"></canvas>
+      <div class="game-hud">
+        <span id="game-dist">路程 0%</span>
+        <span id="game-earn">本局 +0</span>
+      </div>
+    </section>
+
+    <!-- 结局 -->
+    <section id="screen-ending" class="screen screen-ending hidden">
+      <article class="ending-panel">
+        <p class="ending-label" id="ending-label"></p>
+        <h2 class="ending-title" id="ending-title"></h2>
+        <div class="ending-body" id="ending-body"></div>
+        <div class="ending-stats" id="ending-stats"></div>
+        <div class="ending-actions">
+          <button type="button" class="btn btn-primary" id="btn-restart">再走一遭</button>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
